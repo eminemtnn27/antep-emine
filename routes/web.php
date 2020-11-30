@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,4 +14,6 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/hakkimda',[HomeController::class,'showView']);
+Route::get('/hakkimda',[HomeController::class,'showView1']);
+Route::get('/urunler',[HomeController::class,'showView2']);
+Route::get('/text',[HomeController::class,'showUSerProducts']);

@@ -21,21 +21,23 @@ tr:nth-child(even) {
 </head>
 <body>
 
-<h2>Kullanicilar</h2>
+<h2>SiPARİŞLER</h2>
 
 <table>
   <tr>
-    <th>ad</th>
-    <th>email</th>
-    <th>sifre</th>
-  </tr>
-    @foreach($users as $users)
-      <tr>
+    <th>Alıcı</th>
+    <th>Ürün</th>
+    <th>Fiyat</th>
 
-        <td>{{$users->name}}</td>
-        <td>{{$users->email}}</td>
-        <td>{{$users->password}}</td>
-        
+  </tr>
+    @foreach($user_products as $user)
+      <tr>
+        <td>{{$user->name}}</td>
+        <td>{{$user->pname}}</td>
+        <td>{{$user->price}}</td>
+
+
+
       </tr>
 @endforeach
 </table>
