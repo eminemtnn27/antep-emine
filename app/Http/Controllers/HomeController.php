@@ -1,26 +1,51 @@
 <?php
 
-namespace App\Http\Controllers;
 
+namespace App\Http\Controllers;
+use App\Models\laters;
+use App\Models\Product;
+
+use App\Models\banner;
+use App\Models\category_slider;
+use App\Models\blogs;
+use App\Models\Category;
+
+use App\User;
 use Illuminate\Support\Facades\DB;
 
-class HomeController extends Controller{
-     function showView1(){
-        $users=DB::table('users')->get();
-         return view('hakkimda',compact('users'));
+class HomeController extends Controller
+{
+    function showView() {
+        //$users = DB::table('users')->get();
+        $users = User::all();
+        return view('hakkimda', compact('users'));
     }
-      function showView2(){
-        $products=DB::table('products')->get();
-         return view('urunler',compact('products'));
-       }
-       public function showUSerProducts()
-       {
-       $user_products=DB::table('user_products')
-       ->join('users','user_products.user_id', '=' ,'users.id')
-       ->join('products','user_products.products_id','=','products.id')
-       ->select('user_products.*','users.name','products.pname','products.price')
-       ->get();
-       //dd($user_produsts);
-       return view('text',compact('user_products'));
-       }
+    public function showCategory(){
+       /*$categories=DB::table('categories')->get();
+       dd($categories);*/
+      // print_r(categories::all());die;
+     /*$data['products']=products::orderBy('category_id', 'ASC')->get();
+      $data['Category']=categories::orderBy('id', 'ASC')->paginate(5);*/
+      $products=Products::all();
+      $categories=Category::all();
+
+       return view('product.index' ,compact('products','categories'));
+
+   }
+    function latersView(){
+      $laters=laters::all();
+      return view('product.laters',compact('laters'));
+    }
+    function bannerView(){
+      $banners=banner::all();
+      return view('product.banner',compact('banners'));
+    }
+    function blogView(){
+      $blogs=blogs::all();
+      return view('product.blog',compact('blogs'));
+    }
+    function categorySliderView(){
+      $csliders=category_slider::all();
+      return view('product.menu',compact('csliders'));
+    }
 }
