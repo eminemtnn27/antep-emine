@@ -4,13 +4,14 @@
 namespace App\Http\Controllers;
 use App\Models\laters;
 use App\Models\Product;
+use App\Models\User;
 
 use App\Models\banner;
 use App\Models\category_slider;
 use App\Models\blogs;
 use App\Models\Category;
 
-use App\User;
+
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -26,7 +27,7 @@ class HomeController extends Controller
       // print_r(categories::all());die;
      /*$data['products']=products::orderBy('category_id', 'ASC')->get();
       $data['Category']=categories::orderBy('id', 'ASC')->paginate(5);*/
-      $products=Products::all();
+      $products=Product::all();
       $categories=Category::all();
 
        return view('product.index' ,compact('products','categories'));

@@ -52,6 +52,7 @@ Route::post('/import-categories', [CategoryController::class,'import'])->name('c
  * Ödev Kısmı
  */
 Route::get('/category', [HomeController::class, 'showCategory'])->name('product.index');
+
 Route::get('/laters', [HomeController::class, 'latersView'])->name('product.laters');
 Route::get('/banner', [HomeController::class, 'bannerView'])->name('product.banner');
 Route::get('/blog', [HomeController::class, 'blogView'])->name('product.blog');

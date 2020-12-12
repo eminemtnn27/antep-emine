@@ -1,5 +1,4 @@
 @extends('layouts.index-master')
-
 @section('content')
     <section class="featured spad">
         <div class="container">
@@ -10,7 +9,6 @@
                     </div>
                     <div class="featured__controls">
                         <ul>
-
                             <li class="active" data-filter="*">All</li>
                             @foreach($categories as $category)
                                 <li data-filter=".{{$category->name}}">{{$category->name}}</li>
@@ -19,10 +17,7 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="row featured__filter">
-
                     @foreach($products as $product)
                     <div class="col-lg-3 col-md-4 col-sm-6 mix {{$product->getCategory->name}}">
                         <div class="featured__item">
@@ -40,10 +35,10 @@
                         </div>
                     </div>
                     @endforeach
-
-    <form action="{{route('product.export')}}" method="get">
-
-        <button type="submit" class="btn btn-primary">Ürünleri İndir</button>
-      @csrf  </form>
-
+                <form action="{{route('product.export')}}" method="get">
+                    <button type="submit" class="btn btn-primary">Ürünleri İndir</button>
+                </form>
+            </div>
+        </div>
+    </section>
 @endsection

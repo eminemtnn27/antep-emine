@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumnToProduct extends Migration
+class AddCategoriesColumnToProducts extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class AddColumnToProduct extends Migration
      */
     public function up()
     {
-        Schema::table('product', function (Blueprint $table) {
-        function getCategory(){
-        return $this->hasOne('App\Models\Category' , 'id' , 'category_id'); //hangi kategoride olduğunu bulur
-    }
+        Schema::table('products', function (Blueprint $table) {
+          $table->integer('category_id')->unsigned()->nullable()->after('description');
+
+          $table->foreign('category_id')->references('id')->on('categories')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 
@@ -27,7 +27,7 @@ class AddColumnToProduct extends Migration
      */
     public function down()
     {
-        Schema::table('product', function (Blueprint $table) {
+        Schema::table('products', function (Blueprint $table) {
             //
         });
     }

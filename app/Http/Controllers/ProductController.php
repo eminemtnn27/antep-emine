@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Exports\ProductExport;
-use App\Product;
-use App\User;
+use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -18,10 +18,13 @@ class ProductController extends Controller
      */
     public function index()
     {
-      $products = Product::all();
-    //  $products = Product::with(['user'])->where('deleted_at','=',null)->get();
+    //  $products = Product::all();
+    //orderBy('id','DESC')//latest('id')//orderByDesc('id') //3 farklı yöntem son 3 ürün getirir
+  //  $products = Product::with(['user'])->orderBy('id', 'DESC')->take(3)->get();
         //dd($products);
-        return view('product.index', compact('products'));
+     $products = Product::with(['user'])->paginate(2);
+
+        return view('home', compact('products'));
     }
 
     /**
