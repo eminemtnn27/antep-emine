@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Exports\ProductExport;
 use App\Models\Product;
 use App\Models\User;
@@ -18,6 +19,9 @@ class ProductController extends Controller
      */
     public function index()
     {
+        //asc=baştan sona
+        //desc=sondan başa
+        //orderBy=sıralama yapar
     //  $products = Product::all();
     //orderBy('id','DESC')//latest('id')//orderByDesc('id') //3 farklı yöntem son 3 ürün getirir
   //  $products = Product::with(['user'])->orderBy('id', 'DESC')->take(3)->get();
@@ -36,6 +40,9 @@ class ProductController extends Controller
     public function create()
     {
         return view('product.create');
+    //    return view('login');
+        //return view('forget');
+
     }
 
     /**

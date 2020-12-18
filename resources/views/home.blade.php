@@ -22,8 +22,8 @@
         <tr>
 
           <td>{{$product->name}}</td>
-          <td>{{$product->email}}</td>
-          <td></td>
+          <td>{{$product->price}}</td>
+          <td>{{$product->user[0]->name}}</td>
 
         </tr>
   @endforeach

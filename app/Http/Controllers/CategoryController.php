@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Imports\CategoryImport;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
-
+use App\Models\Category;
 class CategoryController extends Controller
 {
     /**
